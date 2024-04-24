@@ -186,6 +186,7 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
             // Node with entire folder
             // Render svg button + folder name, then children
             <div class="folder-container">
+              {/* 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -200,6 +201,7 @@ export function ExplorerNode({ node, opts, fullPath, fileData }: ExplorerNodePro
               >
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
+              */}
               {/* render <a> tag if folderBehavior is "link", otherwise render <button> with collapse click event */}
               <div key={node.name} data-folderpath={folderPath}>
                 {folderBehavior === "link" ? (
