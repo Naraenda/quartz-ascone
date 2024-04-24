@@ -62,9 +62,12 @@ function setupExplorer() {
     }
   }
 
+  /* disable explorer toggle
   explorer.addEventListener("click", toggleExplorer)
   window.addCleanup(() => explorer.removeEventListener("click", toggleExplorer))
+  */
 
+  /* disable folder toggle 
   // Set up click handlers for each folder (click handler on folder "icon")
   for (const item of document.getElementsByClassName(
     "folder-icon",
@@ -72,6 +75,7 @@ function setupExplorer() {
     item.addEventListener("click", toggleFolder)
     window.addCleanup(() => item.removeEventListener("click", toggleFolder))
   }
+  */
 
   // Get folder state from local storage
   const storageTree = localStorage.getItem("fileTree")
