@@ -7,7 +7,7 @@ button#explorer {
   text-align: left;
   cursor: pointer;
   padding: 0;
-  color: var(--dark);
+  color: black;
   display: flex;
   align-items: center;
 
@@ -54,16 +54,10 @@ button#explorer {
   }
 
   & ul {
-    list-style: none;
-    margin: 0.08rem 0;
+    list-style-type: "- ";
     padding: 0;
-    transition:
-      max-height 0.35s ease,
-      transform 0.35s ease,
-      opacity 0.2s ease;
+
     & li > a {
-      color: var(--dark);
-      opacity: 0.75;
       pointer-events: all;
     }
   }
@@ -84,11 +78,7 @@ svg {
   user-select: none;
 
   & div > a {
-    color: var(--secondary);
-    font-family: var(--headerFont);
-    font-size: 0.95rem;
-    font-weight: $semiBoldWeight;
-    line-height: 1.5rem;
+    color: black;
     display: inline-block;
   }
 
@@ -109,12 +99,9 @@ svg {
     font-family: var(--headerFont);
 
     & span {
-      font-size: 0.95rem;
       display: inline-block;
-      color: var(--secondary);
-      font-weight: $semiBoldWeight;
+      color: black;
       margin: 0;
-      line-height: 1.5rem;
       pointer-events: none;
     }
   }
@@ -122,7 +109,7 @@ svg {
 
 .folder-icon {
   margin-right: 5px;
-  color: var(--secondary);
+  color: black;
   cursor: pointer;
   transition: transform 0.3s ease;
   backface-visibility: visible;

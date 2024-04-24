@@ -7,6 +7,7 @@ html {
   text-size-adjust: none;
   overflow-x: hidden;
   width: 100vw;
+  background-color: rgb(47, 40, 40);
 }
 
 body,
@@ -14,20 +15,18 @@ section {
   margin: 0;
   max-width: 100%;
   box-sizing: border-box;
-  background-color: var(--light);
   font-family: var(--bodyFont);
-  color: var(--darkgray);
+  font-size: 10pt;
+  color: black;
 }
 
 .text-highlight {
   background-color: #fff23688;
   padding: 0 0.1rem;
-  border-radius: 5px;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--tertiary) 60%, rgba(255, 255, 255, 0));
-  color: var(--darkgray);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 p,
@@ -41,8 +40,9 @@ ol,
 ul,
 .katex,
 .math {
-  color: var(--darkgray);
-  fill: var(--darkgray);
+  color: black;
+  fill: black;
+  overflow-wrap: anywhere;
   hyphens: auto;
 }
 
@@ -73,22 +73,19 @@ a {
   font-weight: $semiBoldWeight;
   text-decoration: none;
   transition: color 0.2s ease;
-  color: var(--secondary);
+  color: dimgray;
 
   &:hover {
-    color: var(--tertiary) !important;
+    color: darkslategray !important;
   }
 
   &.internal {
     text-decoration: none;
-    background-color: var(--highlight);
+    background-color: rgba(0, 0, 0, 0.05);
     padding: 0 0.1rem;
-    border-radius: 5px;
-    line-height: 1.4rem;
 
     &:has(> img) {
       background-color: none;
-      border-radius: 0;
       padding: 0;
     }
     &.tag-link {
@@ -103,7 +100,7 @@ a {
     margin: 0 0.15em;
 
     > path {
-      fill: var(--dark);
+      fill: black;
     }
   }
 }
@@ -141,8 +138,8 @@ a {
 
     & li:has(> input[type="checkbox"]:checked) {
       text-decoration: line-through;
-      text-decoration-color: var(--gray);
-      color: var(--gray);
+      text-decoration-color: black;
+      color: black;
     }
 
     & li > * {
@@ -151,7 +148,7 @@ a {
     }
 
     p > strong {
-      color: var(--dark);
+      color: black;
     }
   }
 
@@ -162,21 +159,28 @@ a {
       flex-direction: column;
     }
 
+    & .sidebar>*:not(.spacer) {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      box-sizing: content-box;
+      background-color: khaki;
+      box-shadow: 1rem 1rem rgba(0, 0, 0, 0.5), inset 0px 1em rgba(255, 255, 255, 0.5);
+    }
+  
     & .sidebar {
       flex: 1;
       display: flex;
       flex-direction: column;
       gap: 2rem;
       top: 0;
-      width: $sidePanelWidth;
+      width: 300px;
       margin-top: $topSpacing;
-      box-sizing: border-box;
-      padding: 0 4rem;
+      padding: 0 2rem;
       position: fixed;
       @media all and (max-width: $fullPageWidth) {
         position: initial;
         flex-direction: row;
-        padding: 0;
+        padding: 2rem;
         width: initial;
         margin-top: 2rem;
       }
@@ -192,7 +196,6 @@ a {
 
     & .sidebar.right {
       right: calc(calc(100vw - $pageWidth) / 2 - $sidePanelWidth);
-      flex-wrap: wrap;
       & > * {
         @media all and (max-width: $fullPageWidth) {
           flex: 1;
@@ -213,6 +216,7 @@ a {
 
   & .center,
   & footer {
+    box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
     width: $pageWidth;
@@ -222,29 +226,51 @@ a {
       margin-right: 0;
     }
   }
+
+  & .component-group,
+  & nav,
+  & footer,
+  & .page-listing,
+  & article {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 2rem 4rem;
+    box-shadow: 1rem 1rem rgba(0, 0, 0, 0.5), inset 0px 1em rgba(255, 255, 255, 0.5);
+    background-color: khaki;
+    & :not(.popover > *) {
+      box-shadow: none;
+    }
+    &:empty {
+      display: none;
+    }
+  }
+
+  & footer,
+  & .component-group,
+  & .nav {
+    padding: 0.5rem 4rem !important;
+  }
 }
 
 .footnotes {
   margin-top: 2rem;
-  border-top: 1px solid var(--lightgray);
 }
 
 input[type="checkbox"] {
   transform: translateY(2px);
-  color: var(--secondary);
-  border: 1px solid var(--lightgray);
-  border-radius: 3px;
-  background-color: var(--light);
+  color: white;
+  border: 1px solid black;
+  background-color: white;
   position: relative;
-  margin-inline-end: 0.2rem;
-  margin-inline-start: -1.4rem;
+  margin-inline-end: 0rem;
+  margin-inline-start: -2rem;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
 
   &:checked {
-    border-color: var(--secondary);
-    background-color: var(--secondary);
+    border-color: black;
+    background-color: white;
 
     &::after {
       content: "";
@@ -254,7 +280,7 @@ input[type="checkbox"] {
       width: 4px;
       height: 8px;
       display: block;
-      border: solid var(--light);
+      border: solid black;
       border-width: 0 2px 2px 0;
       transform: rotate(45deg);
     }
@@ -263,7 +289,7 @@ input[type="checkbox"] {
 
 blockquote {
   margin: 1rem 0;
-  border-left: 3px solid var(--secondary);
+  border-left: 3px solid black;
   padding-left: 1rem;
   transition: border-color 0.2s ease;
 }
@@ -276,12 +302,12 @@ h5,
 h6,
 thead {
   font-family: var(--headerFont);
-  color: var(--dark);
+  color: black;
   font-weight: revert;
   margin-bottom: 0;
 
   article > & > a[role="anchor"] {
-    color: var(--dark);
+    color: black;
     background-color: transparent;
   }
 }
@@ -309,45 +335,35 @@ h6 {
 // typography improvements
 h1 {
   font-size: 1.75rem;
-  margin-top: 2.25rem;
-  margin-bottom: 1rem;
 }
 
 h2 {
   font-size: 1.4rem;
-  margin-top: 1.9rem;
-  margin-bottom: 1rem;
 }
 
 h3 {
   font-size: 1.12rem;
-  margin-top: 1.62rem;
-  margin-bottom: 1rem;
 }
 
 h4,
 h5,
 h6 {
   font-size: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 figure[data-rehype-pretty-code-figure] {
   margin: 0;
   position: relative;
-  line-height: 1.6rem;
   position: relative;
 
   & > [data-rehype-pretty-code-title] {
     font-family: var(--codeFont);
     font-size: 0.9rem;
     padding: 0.1rem 0.5rem;
-    border: 1px solid var(--lightgray);
+    border: 1px solid black;
     width: max-content;
-    border-radius: 5px;
     margin-bottom: -0.5rem;
-    color: var(--darkgray);
+    color: black;
   }
 
   & > pre {
@@ -358,9 +374,7 @@ figure[data-rehype-pretty-code-figure] {
 pre {
   font-family: var(--codeFont);
   padding: 0 0.5rem;
-  border-radius: 5px;
   overflow-x: auto;
-  border: 1px solid var(--lightgray);
   position: relative;
 
   &:has(> code.mermaid) {
@@ -368,7 +382,6 @@ pre {
   }
 
   & > code {
-    background: none;
     padding: 0;
     font-size: 0.85rem;
     counter-reset: line;
@@ -379,7 +392,6 @@ pre {
 
     & [data-highlighted-chars] {
       background-color: var(--highlight);
-      border-radius: 5px;
     }
 
     & > [data-line] {
@@ -415,17 +427,16 @@ pre {
 
 code {
   font-size: 0.9em;
-  color: var(--dark);
+  color: black;
   font-family: var(--codeFont);
-  border-radius: 5px;
   padding: 0.1rem 0.2rem;
-  background: var(--lightgray);
+  border: 1px dotted black;
 }
 
 tbody,
 li,
 p {
-  line-height: 1.6rem;
+  line-height: 1.2em;
 }
 
 .table-container {
@@ -466,7 +477,6 @@ tr {
 
 img {
   max-width: 100%;
-  border-radius: 5px;
   margin: 1rem 0;
 }
 
@@ -477,16 +487,15 @@ p > img + em {
 
 hr {
   width: 100%;
-  margin: 2rem auto;
+  margin: 2rem 0;
   height: 1px;
   border: none;
-  background-color: var(--lightgray);
+  background-color: black;
 }
 
 audio,
 video {
   width: 100%;
-  border-radius: 5px;
 }
 
 .spacer {
@@ -520,7 +529,6 @@ ol.overflow {
     bottom: 0;
     opacity: 1;
     transition: opacity 0.3s ease;
-    background: linear-gradient(transparent 0px, var(--light));
   }
 }
 
@@ -533,4 +541,38 @@ ol.overflow {
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.sticky-note-wrapper {
+  margin: 0 auto;
+  left: calc(50% - 90px - 1em);
+  position: absolute;
+  padding: 0;
+  width: 0;
+}
+
+.sticky-note {
+  position: absolute;
+  background-color: powderblue;
+  width: 180px;
+  min-height: 180px;
+  padding: 0 1em;
+  box-shadow: 1em 1em rgba(0, 0, 0, 0.5), inset 0px 1em rgba(255, 255, 255, 0.5) !important;
+  z-index: 1;
+
+  &.red {
+    background-color: salmon;
+  }
+
+  &.green {
+    background-color: lightgreen;
+  }
+
+  &.blue {
+    background-color: powderblue;
+  }
+
+  &.purple {
+    background-color: mediumpurple;
+  }
 }
